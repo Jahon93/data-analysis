@@ -1,0 +1,20 @@
+{
+  "name": "2-courses-crud",
+  "version": "1.0.0",
+  "description": "courses crud",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "express",
+    "crud"
+  ],
+  "author": "Jahongir",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
+  }
+}
