@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  HttpCode,
   Param,
   Post,
   Put,
@@ -52,7 +53,7 @@ export class AppController {
     return this.appService.updateReport(body, type, id);
   }
 
-  // @HttpCode(204) // return 204 http response//
+  @HttpCode(204) // return 204 http response
   @Delete(':type/:id')
   deleteReport(@Param('type') type: ReportType, @Param('id') id: string) {
     return this.appService.deleteReport(type, id);
