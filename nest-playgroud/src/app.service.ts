@@ -6,6 +6,11 @@ interface Report {
   source: string;
 }
 
+interface UpdateReport {
+  amount?: number;
+  source?: string;
+}
+
 @Injectable()
 export class AppService {
   getAllReports() {

@@ -5,11 +5,13 @@ import {
   Get,
   HttpCode,
   Param,
+  ParseIntPipe,
   Post,
   Put,
 } from '@nestjs/common';
 import { AppService } from './app.service';
 import { data, ReportType } from './data';
+import { CreateRepoerDTO, UpdateReportDto } from './dto/report.dto';
 
 @Controller('report')
 export class AppController {
@@ -29,16 +31,17 @@ export class AppController {
 
   // Get by Type and ID
   @Get(':type/:id')
-  getReportById(@Param('type') type: ReportType, @Param('id') id: string) {
+  getReportById(
+    @Param('type') type: ReportType,
+    @Param('id', ParseIntPipe) id: string,
+  ) {
+    console.log(id, typeof id);
     return this.appService.getReportById(type, id);
   }
 
   // Create a report
   @Post(':type')
-  createReport(
-    @Body() body: { amount: number; source: string },
-    @Param('type') type: ReportType,
-  ) {
+  createReport(@Body() body: CreateRepoerDTO, @Param('type') type: ReportType) {
     return this.appService.createReport(body, type);
   }
 
@@ -48,7 +51,7 @@ export class AppController {
     @Param('type') type: ReportType,
     @Param('id') id: string,
     @Body()
-    body: { amount: number; source: string },
+    body: UpdateReportDto,
   ) {
     return this.appService.updateReport(body, type, id);
   }
